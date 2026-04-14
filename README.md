@@ -1,9 +1,10 @@
 # Vibe Pong an Agile Way
 Trialing vibe coding using very small stories, an updateable Kanban board and approval after each task is complete.
 
-The intention is for a student to go through the product exploration and create the requirements and stories. An LLM 
-only works on one story at a time. When complete the student can review the work from the explanation given and
+The intention is for a student to go through the product exploration and create the requirements and stories. An LLM only works on one story at a time. When complete the student can review the work from the explanation given and
 get to know the code base and build. They approve each step before the LLM continues.
+
+Claude Code is used with Gemm4:31b-cloud via Ollama.
 
 ## Story 1.1
 
@@ -51,3 +52,58 @@ Verification against Acceptance Criteria:
 Please let me know if the game area is now visible and if this story is approved.
 
 Game area visible, code approved.
+
+I have marked PONG-1.1 as done in stories.json.
+Sprint Planning: PONG-1.2 Create play area
+User Story:
+As a user, I can see a defined play area so that the game space is clear.
+Acceptance Criteria:
+- A rectangular play area is visible.
+- The play area has fixed dimensions.
+- The background is visually distinct from the page.
+Implementation Approach:
+The current #game-container already provides a 800x600 black area with a white border, which satisfies the "rectangular play area" and "fixed dimensions" criteria. To ensure the background is "visually distinct from the page," I will verify the contrast between the #game-container (black) and the body (dark grey #333).
+Since the base structure is already present, I will:
+1. Formalize the play area by ensuring the #game-container is treated as the primary game canvas.
+2. Add a subtle inner border or a specific background property to make the boundary crystal clear.
+3. Update game.js to confirm the dimensions are handled.
+
+Please let me know if this plan is approved, and I will proceed.
+
+I have updated the play area to be more distinct and formalized the dimensions in the game logic.
+                                                                                
+Changes made:
+- Updated index.html: Increased the border to 4px and added box-sizing: border-box to ensure the 800x600 dimensions are precise and the boundary is clearly visible.
+- Updated game.js: Introduced a CONFIG object to store the play area dimensions (WIDTH: 800, HEIGHT: 600) for use in future stories.
+- Updated stories.json: Marked PONG-1.2 as col-inprogress.
+
+Review: PONG-1.2 Create play area
+
+Verification against Acceptance Criteria:
+- A rectangular play area is visible: The #game-container provides a clear rectangular area.
+- The play area has fixed dimensions: CSS and JS now both explicitly define the 800x600 area.
+- The background is visually distinct from the page: The black game area is clearly separated from the dark grey background by a thick white border.
+
+Please let me know if this is approved. Once approved, I will move this story to col-done and begin planning PONG-1.3.
+
+I have marked PONG-1.2 as done in stories.json.
+
+Sprint Planning: PONG-1.3 Render left paddle
+
+User Story:
+As a user, I can see the left paddle in the play area.
+Acceptance Criteria:
+- A left paddle is visible.
+- It appears inside the left side of the play area.
+- It has a fixed size.
+
+Implementation Approach:
+1. Create a new HTML element (div) for the left paddle inside the #game-container.
+2. Add CSS styles for the left paddle:
+- Fixed width and height (e.g., 10px x 100px).
+- White background.
+- Positioned absolutely on the left edge of the container.
+- Centered vertically initially.
+3. Update game.js to include the paddle dimensions in the CONFIG object.
+
+Please let me know if this plan is approved, and I will proceed. 

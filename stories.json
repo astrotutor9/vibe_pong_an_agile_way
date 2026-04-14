@@ -2,12 +2,10 @@
   {
     "storyId": "PONG-1.1",
     "description": "Create game page",
-    "columnId": "col-inprogress"
+    "columnId": "col-done"
   },
   {
-    "storyId": "PONG-1.2",
-    "description": "Create play area",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-1.3",
