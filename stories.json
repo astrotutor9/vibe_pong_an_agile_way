@@ -32,17 +32,17 @@
   {
     "storyId": "PONG-2.1",
     "description": "Move left paddle up",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-2.2",
     "description": "Move left paddle down",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-2.3",
     "description": "Move right paddle up",
-    "columnId": "col-sprint"
+    "columnId": "col-inprogress"
   },
   {
     "storyId": "PONG-2.4",
@@ -102,7 +102,7 @@
   {
     "storyId": "PONG-5.3",
     "description": "Start after message",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-5.4",
