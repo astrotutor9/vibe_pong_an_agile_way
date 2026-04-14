@@ -37,12 +37,33 @@
             right: 0;
             top: 250px;
         }
+        #ball {
+            position: absolute;
+            background-color: white;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            left: 395px;
+            top: 295px;
+        }
+        #score-display {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+        }
     </style>
 </head>
 <body>
     <div id="game-container">
+        <div id="score-display">0 : 0</div>
         <div id="left-paddle" class="paddle"></div>
         <div id="right-paddle" class="paddle"></div>
+        <div id="ball"></div>
     </div>
     <script src="game.js"></script>
 </body>

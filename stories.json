@@ -5,7 +5,9 @@
     "columnId": "col-done"
   },
   {
-    "columnId": "col-done"
+    "storyId": "PONG-1.2",
+    "description": "Create play area",
+    "columnId": "col-backlog"
   },
   {
     "storyId": "PONG-1.3",
@@ -15,42 +17,37 @@
   {
     "storyId": "PONG-1.4",
     "description": "Render right paddle",
-    "columnId": "col-inprogress"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-1.5",
     "description": "Render ball",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-1.6",
     "description": "Display score area",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-2.1",
     "description": "Move left paddle up",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-2.2",
     "description": "Move left paddle down",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-2.3",
     "description": "Move right paddle up",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-2.4",
     "description": "Move right paddle down",
-    "columnId": "col-backlog"
-  },
-  {
-    "storyId": "PONG-3.1",
-    "description": "Start ball movement",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-3.2",
@@ -95,17 +92,17 @@
   {
     "storyId": "PONG-5.1",
     "description": "Create game loop",
-    "columnId": "col-backlog"
+    "columnId": "col-inprogress"
   },
   {
     "storyId": "PONG-5.2",
     "description": "Show start message",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-5.3",
     "description": "Start after message",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-5.4",
