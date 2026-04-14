@@ -7,7 +7,7 @@
   {
     "storyId": "PONG-1.2",
     "description": "Create play area",
-    "columnId": "col-backlog"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-1.3",
@@ -42,32 +42,37 @@
   {
     "storyId": "PONG-2.3",
     "description": "Move right paddle up",
-    "columnId": "col-inprogress"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-2.4",
     "description": "Move right paddle down",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
+  },
+  {
+    "storyId": "PONG-3.1",
+    "description": "Start ball movement",
+    "columnId": "col-inprogress"
   },
   {
     "storyId": "PONG-3.2",
     "description": "Bounce off top wall",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-3.3",
     "description": "Bounce off bottom wall",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-3.4",
     "description": "Bounce off left paddle",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-3.5",
     "description": "Bounce off right paddle",
-    "columnId": "col-backlog"
+    "columnId": "col-sprint"
   },
   {
     "storyId": "PONG-4.1",

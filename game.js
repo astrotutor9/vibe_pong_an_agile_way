@@ -54,6 +54,14 @@ function update() {
             state.rightPaddleY = 0;
         }
     }
+
+    // PONG-2.4: Move right paddle down
+    if (keys['arrowdown']) {
+        state.rightPaddleY += CONFIG.PADDLE_SPEED;
+        if (state.rightPaddleY > CONFIG.HEIGHT - CONFIG.PADDLE_HEIGHT) {
+            state.rightPaddleY = CONFIG.HEIGHT - CONFIG.PADDLE_HEIGHT;
+        }
+    }
 }
 
 function draw() {
