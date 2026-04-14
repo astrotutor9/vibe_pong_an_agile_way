@@ -107,3 +107,57 @@ Implementation Approach:
 3. Update game.js to include the paddle dimensions in the CONFIG object.
 
 Please let me know if this plan is approved, and I will proceed. 
+
+I have implemented the left paddle.
+Changes made:
+- Updated index.html:
+- Added a .paddle CSS class for shared paddle styling (white background, 10x100px).
+- Added #left-paddle styling to position it at the left edge, centered vertically.
+- Added the <div id="left-paddle" class="paddle"></div> inside the game container.
+- Updated game.js: Added PADDLE_WIDTH and PADDLE_HEIGHT to the CONFIG object.
+- Updated stories.json: Marked PONG-1.3 as col-inprogress.
+
+Review: PONG-1.3 Render left paddle
+
+Verification against Acceptance Criteria:
+- A left paddle is visible: A white rectangle is rendered.
+- It appears inside the left side of the play area: Positioned at left: 0.
+- It has a fixed size: Styled at 10px by 100px.
+
+Please let me know if this is approved. Once approved, I will move this story to col-done and begin planning PONG-1.4. 
+
+Paddle was in the correct position and visible. Story approved.
+
+I have marked PONG-1.3 as done in stories.json.
+                                                                               Sprint Planning: PONG-1.4 Render right paddle 
+User Story:
+As a user, I can see the right paddle in the play area.
+Acceptance Criteria:
+- A right paddle is visible.
+- It appears inside the right side of the play area.
+- It has a fixed size.
+Implementation Approach:
+1. Create a new HTML element (div) for the right paddle inside the #game-container.
+2. Add CSS styles for the right paddle:
+- Use the existing .paddle class for shared styling (white background, 10x100px).
+- Add #right-paddle styling to position it at the right edge of the container (right: 0) and center it vertically.
+3. Update stories.json to mark PONG-1.4 as in-progress.
+Please let me know if this plan is approved, and I will proceed. 
+
+I have marked PONG-1.3 as done in stories.json.
+                                                                            
+Sprint Planning: PONG-1.4 Render right paddle
+User Story:
+As a user, I can see the right paddle in the play area.
+Acceptance Criteria:
+- A right paddle is visible.
+- It appears inside the right side of the play area.
+- It has a fixed size.
+Implementation Approach:
+1. Create a new HTML element (div) for the right paddle inside the #game-container.
+2. Add CSS styles for the right paddle:
+- Use the existing .paddle class for shared styling (white background, 10x100px).
+- Add #right-paddle styling to position it at the right edge of the container (right: 0) and center it vertically.
+3. Update stories.json to mark PONG-1.4 as in-progress.
+
+Please let me know if this plan is approved, and I will proceed. 

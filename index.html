@@ -23,10 +23,27 @@
             position: relative;
             box-sizing: border-box;
         }
+        .paddle {
+            position: absolute;
+            background-color: white;
+            width: 10px;
+            height: 100px;
+        }
+        #left-paddle {
+            left: 0;
+            top: 250px;
+        }
+        #right-paddle {
+            right: 0;
+            top: 250px;
+        }
     </style>
 </head>
 <body>
-    <div id="game-container"></div>
+    <div id="game-container">
+        <div id="left-paddle" class="paddle"></div>
+        <div id="right-paddle" class="paddle"></div>
+    </div>
     <script src="game.js"></script>
 </body>
 </html>
