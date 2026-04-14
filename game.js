@@ -9,14 +9,17 @@ const CONFIG = {
 
 // State management
 const state = {
-    isRunning: true
+    isRunning: true,
+    gameStarted: false
 };
 
 function update() {
+    if (!state.gameStarted) return;
     // Logic updates will go here in future stories
 }
 
 function draw() {
+    if (!state.gameStarted) return;
     // Rendering updates will go here in future stories
 }
 

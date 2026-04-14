@@ -92,12 +92,12 @@
   {
     "storyId": "PONG-5.1",
     "description": "Create game loop",
-    "columnId": "col-inprogress"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-5.2",
     "description": "Show start message",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-5.3",
