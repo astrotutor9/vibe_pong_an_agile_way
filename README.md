@@ -1,4 +1,4 @@
-# vibe_pong_an_agile_way
+# Vibe Pong an Agile Way
 Trialing vibe coding using very small stories, an updateable Kanban board and approval after each task is complete.
 
 The intention is for a student to go through the product exploration and create the requirements and stories. An LLM 
