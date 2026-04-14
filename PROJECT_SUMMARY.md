@@ -4,31 +4,30 @@
 **Goal:** Build a classic Pong game incrementally using Agile stories.
 
 ## Current Status
-- **Sprints:** Currently working through the first major batch of features.
+- **Sprints:** Working through movement and physics.
 - **Completed Stories:**
-    - PONG-1.1: Create game page (index.html created)
-    - PONG-1.2: Create play area (800x600 black container with white border)
-    - PONG-1.3: Render left paddle (White 10x100 rectangle)
-    - PONG-1.4: Render right paddle (White 10x100 rectangle)
-    - PONG-1.5: Render ball (White 10x10 circle)
-    - PONG-1.6: Display score area (Top-centered "0 : 0" in monospace font)
-    - PONG-5.1: Create game loop (requestAnimationFrame cycle implemented in game.js)
+    - PONG-1.1 to 1.6: Basic game page and visual elements (Paddles, Ball, Score area).
+    - PONG-2.1 to 2.4: Left and Right paddle movement (W/S and Arrow Up/Down keys).
+    - PONG-5.1 to 5.3: Game loop established and "GET READY!" start sequence implemented.
+- **In Progress:**
+    - PONG-3.1: Start ball movement (Planning complete, implementation pending).
 
 ## Technical Architecture
-- **Frontend:** HTML5/CSS3 (Static elements for game objects)
-- **Logic:** Vanilla JavaScript (`game.js`)
+- **Frontend:** HTML5/CSS3 (DOM-based rendering).
+- **Logic:** Vanilla JavaScript (`game.js`).
 - **Key Components:**
-    - `CONFIG` object in `game.js` for constants (WIDTH, HEIGHT, PADDLE_SIZE, etc.)
-    - `state` object for game status (isRunning)
-    - `gameLoop()` -> `update()` -> `draw()` pattern for game execution.
+    - `CONFIG`: Constants for dimensions, speeds, and delays.
+    - `state`: Tracks `isRunning`, `gameStarted`, `leftPaddleY`, `rightPaddleY`.
+    - `keys`: Object tracking active keyboard inputs for smooth movement.
+    - `gameLoop()`: `requestAnimationFrame` cycle driving `update()` and `draw()`.
 
 ## Next Steps
-- Next planned story: PONG-5.2 (Show start message)
-- Following stories in sprint: PONG-5.3 (Start after message), PONG-2.x (Paddle movement), PONG-3.1 (Ball movement).
+- **Immediate Task:** Implement PONG-3.1 (Ball movement).
+- **Upcoming Stories:** PONG-3.2 to 3.5 (Ball collisions with walls and paddles).
 
 ## File Reference
 - `index.html`: Page structure and styling.
-- `game.js`: Game loop and state logic.
-- `stories.json`: Story tracking and column status.
-- `pong_stories_handoff.md`: Original project requirements and acceptance criteria.
+- `game.js`: Game loop, state, and movement logic.
+- `stories.json`: Reconstructed story tracking (Restored after corruption).
+- `pong_stories_handoff.md`: Source of truth for requirements.
 - `INSTRUCTIONS.md`: Project protocols.
