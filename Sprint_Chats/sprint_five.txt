@@ -1,0 +1,20 @@
+I have marked PONG-4.4 as done in stories.json. Since the resetBall() logic was already implemented to ensure the game remained playable during previous stories, the acceptance criteria are fully met.
+
+With this, we have completed the scoring detection and reset logic. The only remaining stories are in the final batch (PONG-5.4 to 5.6), which focus on detecting and displaying the game winner.
+
+Sprint Planning: PONG-5.4 Detect winner at 6 
+User Story: 
+As a player, the game recognises when someone has won. 
+
+Acceptance Criteria:
+- The game checks scores after each point.
+- A player is declared winner when they reach 6 points. 
+- No winner is declared before 6 points.
+
+Implementation Approach:
+1. Win Condition Logic:
+- In update(), after a point is awarded (where resetBall() is called), add a check to see if either state.leftScore or state.rightScore has reached 6. 
+- If a win is detected, set state.isRunning = false (or a new state.gameWon flag) to stop the game loop updates.
+2. Update stories.json: Mark PONG-5.4 as in-progress. 
+
+Please let me know if this plan is approved, and I will proceed.

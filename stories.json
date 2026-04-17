@@ -82,17 +82,17 @@
   {
     "storyId": "PONG-4.2",
     "description": "Detect right side score",
-    "columnId": "col-backlog"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-4.3",
     "description": "Update score display",
-    "columnId": "col-backlog"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-4.4",
     "description": "Reset ball after score",
-    "columnId": "col-backlog"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-5.1",
@@ -112,7 +112,7 @@
   {
     "storyId": "PONG-5.4",
     "description": "Detect winner at 6",
-    "columnId": "col-backlog"
+    "columnId": "col-inprogress"
   },
   {
     "storyId": "PONG-5.5",

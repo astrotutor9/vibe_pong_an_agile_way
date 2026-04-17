@@ -21,7 +21,8 @@ const state = {
     ballDX: CONFIG.BALL_SPEED,
     ballDY: -CONFIG.BALL_SPEED,
     leftScore: 0,
-    rightScore: 0
+    rightScore: 0,
+    winner: null
 };
 
 // Input tracking
@@ -93,10 +94,6 @@ function update() {
 
         state.ballDX = -state.ballDX;
         state.ballX = CONFIG.WIDTH - CONFIG.PADDLE_WIDTH - CONFIG.BALL_SIZE;
-    } else if (state.ballX + CONFIG.BALL_SIZE >= CONFIG.WIDTH) {
-        // Right wall bounce (fallback)
-        state.ballDX = -state.ballDX;
-        state.ballX = CONFIG.WIDTH - CONFIG.BALL_SIZE;
     }
 
     // PONG-3.4: Bounce off left paddle
@@ -111,7 +108,25 @@ function update() {
     // PONG-4.1: Detect left side score
     if (state.ballX < 0) {
         state.rightScore++;
+        checkWinner();
         resetBall();
+    }
+
+    // PONG-4.2: Detect right side score
+    if (state.ballX + CONFIG.BALL_SIZE >= CONFIG.WIDTH) {
+        state.leftScore++;
+        checkWinner();
+        resetBall();
+    }
+}
+
+function checkWinner() {
+    if (state.leftScore >= 6) {
+        state.winner = 'Left Player';
+        state.isRunning = false;
+    } else if (state.rightScore >= 6) {
+        state.winner = 'Right Player';
+        state.isRunning = false;
     }
 }
 
@@ -142,6 +157,12 @@ function draw() {
     if (ball) {
         ball.style.left = state.ballX + 'px';
         ball.style.top = state.ballY + 'px';
+    }
+
+    // PONG-4.3: Update score display
+    const scoreDisplay = document.getElementById('score-display');
+    if (scoreDisplay) {
+        scoreDisplay.textContent = `${state.leftScore} : ${state.rightScore}`;
     }
 }
 
