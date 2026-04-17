@@ -6,7 +6,8 @@ const CONFIG = {
     PADDLE_HEIGHT: 100,
     BALL_SIZE: 10,
     START_DELAY: 2000,
-    PADDLE_SPEED: 5
+    PADDLE_SPEED: 5,
+    BALL_SPEED: 3
 };
 
 // State management
@@ -14,7 +15,13 @@ const state = {
     isRunning: true,
     gameStarted: false,
     leftPaddleY: 250,
-    rightPaddleY: 250
+    rightPaddleY: 250,
+    ballX: 395,
+    ballY: 295,
+    ballDX: CONFIG.BALL_SPEED,
+    ballDY: -CONFIG.BALL_SPEED,
+    leftScore: 0,
+    rightScore: 0
 };
 
 // Input tracking
@@ -62,6 +69,57 @@ function update() {
             state.rightPaddleY = CONFIG.HEIGHT - CONFIG.PADDLE_HEIGHT;
         }
     }
+
+    // PONG-3.1: Start ball movement
+    state.ballX += state.ballDX;
+    state.ballY += state.ballDY;
+
+    // PONG-3.2: Bounce off top wall
+    if (state.ballY <= 0) {
+        state.ballDY = -state.ballDY;
+        state.ballY = 0;
+    }
+
+    // PONG-3.3: Bounce off bottom wall
+    if (state.ballY + CONFIG.BALL_SIZE >= CONFIG.HEIGHT) {
+        state.ballDY = -state.ballDY;
+        state.ballY = CONFIG.HEIGHT - CONFIG.BALL_SIZE;
+    }
+
+    // PONG-3.5: Bounce off right paddle
+    if (state.ballX + CONFIG.BALL_SIZE >= CONFIG.WIDTH - CONFIG.PADDLE_WIDTH &&
+        state.ballY + CONFIG.BALL_SIZE >= state.rightPaddleY &&
+        state.ballY <= state.rightPaddleY + CONFIG.PADDLE_HEIGHT) {
+
+        state.ballDX = -state.ballDX;
+        state.ballX = CONFIG.WIDTH - CONFIG.PADDLE_WIDTH - CONFIG.BALL_SIZE;
+    } else if (state.ballX + CONFIG.BALL_SIZE >= CONFIG.WIDTH) {
+        // Right wall bounce (fallback)
+        state.ballDX = -state.ballDX;
+        state.ballX = CONFIG.WIDTH - CONFIG.BALL_SIZE;
+    }
+
+    // PONG-3.4: Bounce off left paddle
+    if (state.ballX <= CONFIG.PADDLE_WIDTH &&
+        state.ballY + CONFIG.BALL_SIZE >= state.leftPaddleY &&
+        state.ballY <= state.leftPaddleY + CONFIG.PADDLE_HEIGHT) {
+
+        state.ballDX = -state.ballDX;
+        state.ballX = CONFIG.PADDLE_WIDTH;
+    }
+
+    // PONG-4.1: Detect left side score
+    if (state.ballX < 0) {
+        state.rightScore++;
+        resetBall();
+    }
+}
+
+function resetBall() {
+    state.ballX = 395;
+    state.ballY = 295;
+    state.ballDX = CONFIG.BALL_SPEED * (Math.random() > 0.5 ? 1 : -1);
+    state.ballDY = CONFIG.BALL_SPEED * (Math.random() > 0.5 ? 1 : -1);
 }
 
 function draw() {
@@ -77,6 +135,13 @@ function draw() {
     const rightPaddle = document.getElementById('right-paddle');
     if (rightPaddle) {
         rightPaddle.style.top = state.rightPaddleY + 'px';
+    }
+
+    // PONG-3.1: Render ball position
+    const ball = document.getElementById('ball');
+    if (ball) {
+        ball.style.left = state.ballX + 'px';
+        ball.style.top = state.ballY + 'px';
     }
 }
 

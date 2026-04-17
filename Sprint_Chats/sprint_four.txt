@@ -1,0 +1,18 @@
+I have marked PONG-3.5 as done in stories.json.
+                                                                                   Sprint Planning: PONG-4.2 Detect right side score
+User Story:
+As a player, a point is awarded when the ball passes the right paddle.
+Acceptance Criteria:
+- The system detects when the ball exits the right boundary.
+- Left player score increases by 1. 
+Implementation Approach: 
+1. Collision Logic:
+- In update(), I will remove the "Right wall bounce (fallback)" logic implemented in PONG-3.5. The right boundary should now trigger a score instead of a bounce. 
+- In update(), check if state.ballX + CONFIG.BALL_SIZE is greater than or equal to CONFIG.WIDTH.
+- If true, the left player scores.
+2. Scoring:
+- Increment state.leftScore++.
+- Call resetBall().
+3. Update stories.json: Mark PONG-4.2 as in-progress.
+
+Please let me know if this plan is approved, and I will proceed.

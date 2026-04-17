@@ -52,32 +52,32 @@
   {
     "storyId": "PONG-3.1",
     "description": "Start ball movement",
-    "columnId": "col-inprogress"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-3.2",
     "description": "Bounce off top wall",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-3.3",
     "description": "Bounce off bottom wall",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-3.4",
     "description": "Bounce off left paddle",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-3.5",
     "description": "Bounce off right paddle",
-    "columnId": "col-sprint"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-4.1",
     "description": "Detect left side score",
-    "columnId": "col-backlog"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-4.2",
