@@ -59,3 +59,65 @@ Using this technique can significantly help a student in their job search for se
 3. Quality Assurance Mindset: Being able to discuss "Acceptance Criteria" and "Edge Case Handling" (like the wall vs. paddle collision issue) shows a level of maturity and attention to detail that distinguishes a "coder" from a "software engineer."
 4. Portfolio Strength: Instead of just showing a final demo, the student can showcase the evolution of the project, explaining why certain architectural decisions were made at specific milestones.
 
+### Question to the LLM.
+What parts of this process could be improved on or built on further to make the learning process even more beneficial and project development more to industry agile standards? Building tests is one thought we are having.
+
+## Here are several ways this process could be evolved to more closely mirror professional industry standards and maximize the learning benefit:
+
+### Transition to TDD (Test-Driven Development)
+
+Instead of Plan $\rightarrow$ Implement $\rightarrow$ Review, the cycle becomes Plan $\rightarrow$ Write Test $\rightarrow$ Implement $\rightarrow$ Verify.
+- The Learning Benefit: Students learn to write "testable code." They stop writing monolithic functions and start writing modular logic.
+- Industry Standard: In professional environments, a story is often not allowed to move to col-review unless the developer can provide a passing test case.
+- Example for Pong: For PONG-3.2 (Bounce off top wall), the student would write a test that sets the ball's Y position to 0, calls update(), and asserts that ballDY is now positive.
+
+### Implementation of a "Definition of Done" (DoD) Checklist 
+
+Currently, we use "Acceptance Criteria," but industry teams use a DoD that applies to every story.
+
+- The Learning Benefit: It teaches discipline and consistency.
+- Industry Standard: A story isn't "Done" until:
+
+- Code is linted and follows style guides.
+- Unit tests are written and passing.
+- Integration tests verify the feature in the UI.
+- Code has been peer-reviewed (Pull Request).
+- Documentation/Comments are updated.
+
+### Introducing "Spikes" for Technical Uncertainty
+
+When we encountered the "Right Wall vs. Right Paddle" collision conflict, we essentially did a "mini-spike" (investigating and adjusting the approach).
+- The Learning Benefit: Students learn that it's okay not to have the answer immediately. They learn to create a "Spike Story"—a time-boxed task dedicated purely to research or prototyping—before committing to an 
+  implementation plan.
+- Industry Standard: Spikes are used to reduce risk and uncertainty before a complex story is pulled into a sprint.
+
+### Version Control and Branching Strategy (Git Flow)
+
+We worked primarily on a single branch. In industry, this is rare.
+
+- The Learning Benefit: Students learn how to manage merge conflicts and use a structured workflow.
+- Industry Standard:
+- Feature Branches: Each story (e.g., PONG-3.1) gets its own branch.
+- Pull Requests (PRs): The "Review" phase would happen via a PR, where another developer (or an AI agent) suggests changes before the code is merged into the main branch.
+
+### CI/CD Pipeline Integration
+
+The "verification" currently happens manually in the browser.
+
+- The Learning Benefit: Understanding that code lives in a pipeline.
+- Industry Standard: Once a PR is opened, a CI (Continuous Integration) server (like GitHub Actions) automatically runs all tests. If a test fails, the "Merge" button is disabled.
+
+### Summary of the "Advanced" Agile Loop:
+
+If we were to implement these, the loop for a single story would look like this:
+
+1. Plan: Define implementation and test cases.
+2. Branch: Create feature/PONG-X.X.
+3. TDD: Write a failing test $\rightarrow$ Write code $\rightarrow$ Make test pass.
+4. Lint: Run a linter to ensure code quality.
+5. PR: Submit a Pull Request with a summary of changes.
+6. CI: Automated tests run and pass.
+7. Merge: Merge to main and move story to col-done.
+
+This progression turns a student from someone who "can write code" into someone who "can deliver a professional software product."
+
