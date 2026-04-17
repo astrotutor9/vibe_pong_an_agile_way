@@ -124,10 +124,42 @@ function checkWinner() {
     if (state.leftScore >= 6) {
         state.winner = 'Left Player';
         state.isRunning = false;
+        scheduleRestart();
     } else if (state.rightScore >= 6) {
         state.winner = 'Right Player';
         state.isRunning = false;
+        scheduleRestart();
     }
+}
+
+function scheduleRestart() {
+    setTimeout(() => {
+        fullReset();
+    }, 3000);
+}
+
+function fullReset() {
+    state.leftScore = 0;
+    state.rightScore = 0;
+    state.leftPaddleY = 250;
+    state.rightPaddleY = 250;
+    state.winner = null;
+
+    resetBall();
+
+    const winnerMsg = document.getElementById('winner-message');
+    if (winnerMsg) {
+        winnerMsg.style.display = 'none';
+    }
+
+    const startMsg = document.getElementById('start-message');
+    if (startMsg) {
+        startMsg.style.display = 'block';
+    }
+
+    state.isRunning = true;
+    state.gameStarted = false;
+    startGame();
 }
 
 function resetBall() {
@@ -164,14 +196,23 @@ function draw() {
     if (scoreDisplay) {
         scoreDisplay.textContent = `${state.leftScore} : ${state.rightScore}`;
     }
+
+    // PONG-5.5: Render winner message
+    if (state.winner) {
+        const winnerMsg = document.getElementById('winner-message');
+        if (winnerMsg) {
+            winnerMsg.style.display = 'block';
+            winnerMsg.textContent = `WINNER: ${state.winner.toUpperCase()}`;
+        }
+    }
 }
 
 function gameLoop() {
     if (state.isRunning) {
         update();
-        draw();
-        requestAnimationFrame(gameLoop);
     }
+    draw();
+    requestAnimationFrame(gameLoop);
 }
 
 function startGame() {

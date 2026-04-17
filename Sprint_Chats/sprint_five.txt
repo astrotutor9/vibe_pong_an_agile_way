@@ -18,3 +18,139 @@ Implementation Approach:
 2. Update stories.json: Mark PONG-5.4 as in-progress. 
 
 Please let me know if this plan is approved, and I will proceed.
+
+I have implemented the win condition detection.
+
+  Changes made:
+  - Updated state: Added winner: null to track who won the game.
+  - Updated update(): In the scoring logic for both left and right sides, I added a call to checkWinner().
+  - Implemented checkWinner(): This function checks if either player has reached 6 points. If so, it sets the winner in the state and sets state.isRunning = false to stop the game loop.
+  - Updated stories.json: Marked PONG-5.4 as col-inprogress.
+
+  Review: PONG-5.4 Detect winner at 6
+
+  Verification against Acceptance Criteria:
+  - The game checks scores after each point: checkWinner() is called immediately after any point is incremented.
+  - A player is declared winner when they reach 6 points: Logic verifies if state.leftScore or state.rightScore is $\ge 6$.
+  - No winner is declared before 6 points: The logic only triggers when the score reaches 6.
+
+  Please let me know if this is approved. Once approved, I will move this story to col-done and begin planning PONG-5.5 (Display winner message).
+
+✻ Brewed for 1m 24s
+
+❯ APPROVED. Change 5-5 and 5-6 col_backlog to col_sprint to indicate the current sprint. Also update the project_summary with new context to keep it fresh and up to date.
+
+ I have updated the project summary and adjusted the story statuses.
+ 
+Updates: 
+- stories.json: PONG-5.4 is marked as col-done. PONG-5.5 and PONG-5.6 have been moved to col-sprint.   
+- PROJECT_SUMMARY.md: Updated to reflect the current date (2026-04-17) and the completion of the scoring and win-detection systems.
+Sprint Planning: PONG-5.5 Display winner message 
+User Story:
+As a player, I can see who won the game. 
+Acceptance Criteria:
+- A minimal winner message is shown.
+- The message clearly identifies the winning player. 
+- Ball movement stops while the message is shown.    
+
+Implementation Approach: 
+1. UI Addition: Add a #winner-message div to index.html, styled similarly to the start message (centered, white text, semi-transparent background), but hidden by default (display: none).                           
+  2. Rendering Logic:  
+- In draw(), check if state.winner is not null. 
+- If a winner exists, display the #winner-message element and set its text to "WINNER: [Player Name]". 
+3. State Synchronization: Ensure that when state.isRunning is set to false (which happens in checkWinner()), the update() loop stops, effectively freezing the ball and paddles.
+4. Update stories.json: Mark PONG-5.5 as in-progress. 
+
+Please let me know if this plan is approved, and I will proceed.
+
+ I have updated the project summary and adjusted the story statuses.
+
+Updates: 
+- stories.json: PONG-5.4 is marked as col-done. PONG-5.5 and PONG-5.6 have been moved to col
+sprint. 
+- PROJECT_SUMMARY.md: Updated to reflect the current date (2026-04-17) and the completion of the scoring and win-detection systems.
+
+Sprint Planning: PONG-5.5 Display winner message 
+
+User Story:
+As a player, I can see who won the game.
+Acceptance Criteria:
+- A minimal winner message is shown.
+- The message clearly identifies the winning player. 
+- Ball movement stops while the message is shown. 
+Implementation Approach: 
+1. UI Addition: Add a #winner-message div to index.html, styled similarly to the start message (centered, white text, semi-transparent background), but hidden by default (display: none). 
+2. Rendering Logic:
+- In draw(), check if state.winner is not null.
+- If a winner exists, display the #winner-message element and set its text to "WINNER: [Player Name]". 
+3. State Synchronization: Ensure that when state.isRunning is set to false (which happens in checkWinner()), the update() loop stops, effectively freezing the ball and paddles.
+4. Update stories.json: Mark PONG-5.5 as in-progress.  
+
+Please let me know if this plan is approved, and I will proceed. 
+
+I have implemented the winner message display.
+Changes made: 
+- Updated index.html: 
+- Added #winner-message styling: positioned centrally, styled as a bold white box with a semi-transparent background, and hidden by default. 
+- Added the <div id="winner-message"></div> element inside the game container. 
+- Updated game.js: 
+- In draw(), added logic to check if state.winner is set. If so, it displays the #winner-message element and sets its text to "WINNER: [Player Name]". 
+- Updated stories.json: Marked PONG-5.5 as col-inprogress.
+Review: PONG-5.5 Display winner message 
+Verification against Acceptance Criteria: 
+- A minimal winner message is shown: The #winner-message div is now visible when a winner is
+declared. 
+- The message clearly identifies the winning player: The text is set to "WINNER: LEFT PLAYER" or "WINNER: RIGHT PLAYER". 
+- Ball movement stops while the message is shown: Because state.isRunning is set to false in checkWinner(), the gameLoop stops calling update() and draw(). (Wait, I should double check this: since draw() is called
+   inside gameLoop, if state.isRunning is false, draw() won't be called. I need to fix this so the winner message can actually be rendered once).
+Correction: I noticed a flaw in my implementation. If state.isRunning becomes false immediately, the final draw() call that would show the winner message will not execute. I will fix this by updating the gameLoop 
+  to always call draw() even if the game is not "running" (logic-wise), or simply ensuring one last draw occurs. 
+
+I will fix this now.
+
+I have fixed the game loop to ensure the winner message is displayed correctly. By moving the draw() call outside the if (state.isRunning) block, the rendering engine continues to run even after the game logic
+stops, allowing the winner message to be rendered on screen.
+
+Review: PONG-5.5 Display winner message (Final)
+Verification against Acceptance Criteria: 
+- A minimal winner message is shown: The #winner-message div is now displayed when a winner is declared.
+- The message clearly identifies the winning player: The text is set to "WINNER: LEFT PLAYER" or "WINNER: RIGHT PLAYER".
+- Ball movement stops while the message is shown: The update() function is now blocked by state.isRunning = false, so no positions are changed.
+
+Please let me know if this is approved. Once approved, I will move this story to col-done and begin planning PONG-5.6 (Reset after win).
+
+I have implemented the full game reset logic.
+
+Changes made:
+- Updated game.js:
+- Added scheduleRestart(): Uses setTimeout to trigger a restart after a 3-second pause when a winner is declared.
+- Implemented fullReset():
+- Resets scores to 0 : 0.
+- Returns paddles to their starting vertical positions (250px).
+- Clears the winner state and hides the winner message.
+- Resets the ball via resetBall().
+- Re-shows the "GET READY!" start message.
+- Sets state.isRunning = true and state.gameStarted = false to restart the game flow from the beginning. 
+- Updated checkWinner(): Now calls scheduleRestart() when a player reaches 6 points. 
+- Updated stories.json: Marked PONG-5.6 as col-inprogress.
+Review: PONG-5.6 Reset after win 
+
+Verification against Acceptance Criteria:
+- Winner message remains visible for a short pause: The 3-second setTimeout in scheduleRestart ensures this. 
+- Scores reset to 0 : 0: state.leftScore and state.rightScore are reset to 0 in fullReset().
+- Ball resets to the centre: resetBall() is called within the reset sequence.
+- Paddles return to their starting positions: Both leftPaddleY and rightPaddleY are reset to 250. 
+- A new game starts when the message disappears: startGame() is called, which triggers the start delay and then sets gameStarted = true.
+
+Please let me know if this is approved. Once approved, I will move this story to col-done, completing all stories in the project! 
+
+I have marked PONG-5.6 as done in stories.json and updated the PROJECT_SUMMARY.md to reflect the completion of the project.
+
+Congratulations! All stories from the project handoff have been implemented and verified. The browser-based Pong game is now fully functional with:  
+- A structured play area and score display.
+- Independent paddle controls for two players.
+- Ball movement with collision physics for walls and paddles.
+- A complete scoring and win-detection system (first to 6). 
+- A full game lifecycle including a start sequence and an automatic reset after a victory. 
+
+It has been a pleasure working on this project with you. Let me know if there is anything else you'd like to add or modify! 

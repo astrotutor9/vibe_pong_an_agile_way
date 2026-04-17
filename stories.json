@@ -112,16 +112,16 @@
   {
     "storyId": "PONG-5.4",
     "description": "Detect winner at 6",
-    "columnId": "col-inprogress"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-5.5",
     "description": "Display winner message",
-    "columnId": "col-backlog"
+    "columnId": "col-done"
   },
   {
     "storyId": "PONG-5.6",
     "description": "Reset after win",
-    "columnId": "col-backlog"
+    "columnId": "col-done"
   }
 ]
